@@ -14,7 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DrawerPage(title: 'Smart Task Demo Page'),
+      //home: DrawerPage(title: 'Smart Task Demo Page'),
+      initialRoute: '/',
+      routes: <String,WidgetBuilder>{
+        '/':(BuildContext context) => DrawerPage(title:'page B'),
+        '/a':(BuildContext context) => LockPage(),
+        '/b':(BuildContext context) => DrawerPage(title:'page B'),
+      },
     );
   }
 }
@@ -33,6 +39,7 @@ class _MyDrawerPageState extends State<DrawerPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home:Scaffold(
         key: _key,
         appBar: AppBar(
@@ -75,13 +82,15 @@ class _MyDrawerPageState extends State<DrawerPage> {
                 title: Text('ロック管理'),
                 trailing: Icon(Icons.arrow_forward),
                 onTap: (){
+                  Navigator.of(context).pushNamed('/a');
                   print('onTap');
-                  Navigator.push(
-
-                      context,
-                      MaterialPageRoute(builder: (context) => LockPage(),
-                     )
-                  );
+                  // Navigator.push(
+                  //
+                  //     context,
+                  //     //MaterialPageRoute(builder: (context) => LockPage(),
+                  //     Navigator.of(context).pushNamed('/a');
+                  //    )
+                  // );
                 }
               ),
               ListTile(
