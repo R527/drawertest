@@ -1,50 +1,40 @@
+import 'package:drawertest/Prefabs/lock_setting_listtile.dart';
 import 'package:flutter/material.dart';
 
-class LockPage extends StatelessWidget{
 
-  var list = ['test','test','test','test'];
+class LockPage extends StatefulWidget {
+  @override
+  _LockPage createState() => _LockPage();
+}
 
+
+class _LockPage extends State<LockPage>{
+
+  LockSetting _lockSetting = LockSetting();
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text('ロック画面'),
+        title: Text('ロック管理'),
       ),
       body: Container(
         height: double.infinity,
         //color: Colors.red,
-        child: Column(
-          children: [
-            ListView.builder(
-                itemCount: 2,
-                itemBuilder: (BuildContext context, int index) {
-                  if(index == list.length){
-                    list.addAll(['test','test','test']);
-                  }
-                  return _messageItem(list[index]);
-                },
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-            )
-          ],
-        ),
+        // child: Column(
+        //   children: [
+        //     ListView.builder(
+        //       shrinkWrap: true,
+        //       physics: NeverScrollableScrollPhysics(),
+        //       itemCount: 2,
+        //       itemBuilder: (BuildContext context, int index) {
+        //       //return
+        //       },
+        //     )
+        //   ],
+        // ),
       ),
     );
   }
 
-  Widget _messageItem(String title){
-    return Container(
-      decoration: new BoxDecoration(
-          border: new Border(bottom: BorderSide(width: 1.0,color:Colors.grey))
-      ),
-      child: ListTile(
-        title: Text(
-          title,
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
+
 }
